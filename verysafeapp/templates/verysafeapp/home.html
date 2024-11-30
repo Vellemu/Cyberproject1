@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Very Safe App</title>
+</head>
+<body>
+    <h1>Welcome to the Very Safe App</h1>
+    <p>Here you can store all your secrets.(maybe)</p>
+
+    <!-- Login to your account -->
+     <h2>Login</h2>
+     <form method="post" action="{% url 'loginView' %}">
+        {% csrf_token %} <!-- Removed for the purpose of the project-->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+     </form>
+    
+    <!-- Register for an account -->
+    <h2>Register</h2>
+    <form method="post"  action="{% url 'registerView' %}">
+        {% csrf_token %} <!-- Removed for the purpose of the project-->
+        <label for="new_username">Username:</label>
+        <input type="text" id="new_username" name="username" required>
+        <label for="new_password">Password:</label>
+        <input type="password" id="new_password" name="password" required>
+        <button type="submit">Register</button>
+    </form>
+</html>

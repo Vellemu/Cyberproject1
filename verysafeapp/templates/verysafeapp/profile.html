@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>profile page</title>
+</head>
+<body>
+    <h1>Welcome {{ username }} to your profile</h1>
+    <p>Here you can keep your private stuff private</p>
+    <h2>Secrets</h2>
+    <form method="post" action="{% url 'addSecret' %}">
+        {% csrf_token %}
+        <label for="secret">Secret:</label>
+        <input type="text" id="secret" name="secret" required>
+        <button type="submit">Add Secret</button>
+    </form>
+    <ul>
+        {% for secret in secrets %}
+            <li>{{ secret.secret }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
